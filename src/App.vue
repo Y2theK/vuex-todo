@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Hello VueX</h1>
+    <h1>{{ $store.state.Todo.sayHello }}</h1>
   </div>
 </template>
 
@@ -8,6 +8,9 @@
 export default {
   name: "App",
   components: {},
+  mounted() {
+    console.log(this.$store.state.Todo);
+  },
 };
 </script>
 
