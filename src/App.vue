@@ -1,16 +1,13 @@
 <template>
-  <div id="app">
-    <h1>{{ $store.state.Todo.sayHello }}</h1>
-  </div>
+  <div id="app"><Todos /></div>
 </template>
 
 <script>
+import Todos from "./components/Todos.vue";
+
 export default {
   name: "App",
-  components: {},
-  mounted() {
-    console.log(this.$store.state.Todo);
-  },
+  components: { Todos },
 };
 </script>
 
