@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   //if we have 10 getters we will need to write 10 computed properties -> not good
   //use mapGetters for that cases
@@ -22,14 +22,17 @@ export default {
   //   myTodos() {
   //     return this.$store.getters.myTodos;
   //   },
+  // }, OR
+  //  computed: {
+  //   //user spread operator if you have local computed properties.
+  //   ...mapGetters(["myTodos"]),
   // },
+  methods: mapActions(["getTodos"]),
 
-  computed: {
-    //user spread operator if you have local computed properties.
-    ...mapGetters(["myTodos"]),
-  },
+  computed: mapGetters(["myTodos"]),
+
   mounted() {
-    console.log(this.myTodos);
+    this.getTodos();
   },
 };
 </script>
