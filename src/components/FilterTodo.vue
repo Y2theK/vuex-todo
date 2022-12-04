@@ -1,11 +1,11 @@
 <template>
   <select
     class="form-select"
-    aria-label="Default select example"
+    placeholder="Select limit"
     v-model="limit"
     @change="filterTodo(limit)"
   >
-    <option selected>Select limit</option>
+    <option selected disabled>Select limit</option>
     <option value="5">5</option>
     <option value="50">50</option>
     <option value="100">100</option>

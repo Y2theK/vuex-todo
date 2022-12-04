@@ -8,12 +8,14 @@
         <div class="col-md-4 my-4" v-for="todo in myTodos" :key="todo.id">
           <b-card
             @dblclick="toggleTodo(todo)"
+            bg-variant="dark"
             text-variant="white"
             class="text-center"
-            :class="[todo.completed ? 'bg-dark' : 'bg-success']"
           >
             <b-card-text class="d-flex justify-content-between">
-              <span>{{ todo.title }}</span>
+              <span :class="[todo.completed ? 'completed text-warning' : '']">{{
+                todo.title
+              }}</span>
               <span @click="deleteTodo(todo.id)"
                 ><b-icon icon="trash-fill" variant="danger"></b-icon
               ></span>
@@ -51,4 +53,7 @@ export default {
 </script>
 
 <style>
+.completed {
+  text-decoration: line-through;
+}
 </style>
