@@ -1,10 +1,9 @@
 <template>
   <div class="input-group mb-3">
+    {{ newTodo.title }}
     <input type="text" class="form-control" v-model="newTodo.title" />
     <div class="input-group-append">
-      <button class="btn btn-success" @click="addTodo(newTodo)">
-        Add Todo
-      </button>
+      <button class="btn btn-success" @click="addedTodo">Add Todo</button>
     </div>
   </div>
 </template>
@@ -19,7 +18,13 @@ export default {
       },
     };
   },
-  methods: mapActions(["addTodo"]),
+  methods: {
+    ...mapActions(["addTodo"]),
+    addedTodo() {
+      this.addTodo(this.newTodo);
+      this.newTodo.title = "";
+    },
+  },
 };
 </script>
 
