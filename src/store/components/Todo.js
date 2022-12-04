@@ -12,6 +12,9 @@ export default {
     setTodos(state, todos) {
       state.todos = todos;
     },
+    setTodo(state, newTodo) {
+      state.todos.unshift(newTodo);
+    },
   },
   actions: {
     async getTodos({ commit }) {
@@ -19,6 +22,15 @@ export default {
       let todos = res.data;
       commit("setTodos", todos);
       // console.log(res);
+    },
+    async addTodo(context, newTodo) {
+      let res = await axios.post(
+        "https://jsonplaceholder.typicode.com/todos",
+        newTodo
+      );
+      // let newTodo = ;
+      context.commit("setTodo", res.data);
+      console.log(context);
     },
   },
 };

@@ -3,6 +3,7 @@
     <h1 class="text-danger text-center">All Todos</h1>
     <div class="container">
       <div class="row">
+        <AddTodo />
         <div class="col-md-4 my-4" v-for="todo in myTodos" :key="todo.id">
           <b-card bg-variant="success" text-variant="white" class="text-center">
             <b-card-text>{{ todo.title }}</b-card-text>
@@ -15,18 +16,11 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import AddTodo from "./AddTodo.vue";
 export default {
-  //if we have 10 getters we will need to write 10 computed properties -> not good
-  //use mapGetters for that cases
-  // computed: {
-  //   myTodos() {
-  //     return this.$store.getters.myTodos;
-  //   },
-  // }, OR
-  //  computed: {
-  //   //user spread operator if you have local computed properties.
-  //   ...mapGetters(["myTodos"]),
-  // },
+  components: {
+    AddTodo,
+  },
   methods: mapActions(["getTodos"]),
 
   computed: mapGetters(["myTodos"]),
