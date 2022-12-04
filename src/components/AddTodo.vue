@@ -14,6 +14,7 @@ export default {
     return {
       newTodo: {
         title: "",
+        completed: false,
       },
     };
   },

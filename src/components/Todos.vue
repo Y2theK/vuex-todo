@@ -6,7 +6,12 @@
       <FilterTodo />
       <div class="row">
         <div class="col-md-4 my-4" v-for="todo in myTodos" :key="todo.id">
-          <b-card bg-variant="dark" text-variant="white" class="text-center">
+          <b-card
+            @dblclick="toggleTodo(todo)"
+            text-variant="white"
+            class="text-center"
+            :class="[todo.completed ? 'bg-dark' : 'bg-success']"
+          >
             <b-card-text class="d-flex justify-content-between">
               <span>{{ todo.title }}</span>
               <span @click="deleteTodo(todo.id)"
@@ -29,7 +34,13 @@ export default {
     AddTodo,
     FilterTodo,
   },
-  methods: mapActions(["getTodos", "deleteTodo"]),
+  methods: {
+    toggleTodo(todo) {
+      todo.completed = !todo.completed;
+      this.updateTodo(todo);
+    },
+    ...mapActions(["getTodos", "deleteTodo", "updateTodo"]),
+  },
 
   computed: mapGetters(["myTodos"]),
 
