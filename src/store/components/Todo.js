@@ -43,5 +43,11 @@ export default {
       );
       context.commit("deleteTodo", removeId);
     },
+    async filterTodo(context, limit) {
+      let res = await axios.get(
+        `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
+      );
+      context.commit("setTodos", res.data);
+    },
   },
 };
